@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CustomerController {
 
-	@RequestMapping(value = "customer", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/random", produces = "application/json", method = RequestMethod.GET)
 	public String getRandomCustomer() {
 		CustomerService service = new CustomerService();
 		
