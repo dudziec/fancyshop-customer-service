@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.json.JSONObject;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +25,8 @@ public class Customer {
 	private Long id;
 	private String firstName;
 	private String name;
+	@JsonIgnore
+	private String password;
 	
 	
 	public JSONObject toJSON() {

@@ -3,20 +3,33 @@ package de.saxsys.fancyshop.Customer;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import lombok.Getter;
 
 @Getter
+@Service
 public class CustomerService {
 
 	private String[] names = new String[] {"Green", "James", "Smith", "Jones", "Black", "Illard", "Irving", "White"};
 	private String[] firstNames = new String[] {"John", "Tom", "Jerry", "Walter", "Damian", "George", "Adrian", "Warner"};
-
+	
+	@Autowired
+	public CustomerRepository repository;
+	
+	@Bean
+	private PasswordEncoder getPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
 	public JSONObject getRandomCustomer() 
 	{
 		Customer customer = Customer.builder().name(getRandomFromTable(names))
 				                              .firstName(getRandomFromTable(firstNames)).build();
-
 		return customer.toJSON();
 	}
 	
@@ -25,4 +38,16 @@ public class CustomerService {
 		return table[ThreadLocalRandom.current().nextInt(0, table.length)];
 	}
 	
+	public Customer getCustomerById(Long id) {
+		return repository.findById(id).get();
+	}
+	
+	public void addCustomer(Customer customer) {
+		customer.setPassword(getPasswordEncoder().encode(customer.getPassword()));
+		repository.save(customer);
+	}
+	
+	public void removeCustomerWithId(Long id) {
+		repository.deleteById(id);
+	}
 }
