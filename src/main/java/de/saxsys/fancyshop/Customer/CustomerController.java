@@ -1,5 +1,7 @@
 package de.saxsys.fancyshop.Customer;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,13 +23,19 @@ public class CustomerController {
 		return service.getRandomCustomer().toString();
 	}
 	
-	@GetMapping(value = "/get-customer/{id}")
+	@GetMapping(value = "/get/{id}")
 	public Customer getCustomerById(@PathVariable Long id)
 	{
 		return service.getCustomerById(id);
 	}
 	
-	@PostMapping(value = "/add-customer")
+	@GetMapping(value = "/get-all")
+	public List<Customer> getAllCustomers() {
+		return service.getAll();
+	}
+	
+	
+	@PostMapping(value = "/add")
 	public void addCustomer(@RequestBody Customer customer) {
 		service.addCustomer(customer);
 	}

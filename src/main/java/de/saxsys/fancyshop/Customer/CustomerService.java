@@ -1,10 +1,10 @@
 package de.saxsys.fancyshop.Customer;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import lombok.Getter;
@@ -44,5 +44,9 @@ public class CustomerService {
 	
 	public void removeCustomerWithId(Long id) {
 		repository.deleteById(id);
+	}
+
+	public List<Customer> getAll() {
+		return (List<Customer>) repository.findAll();
 	}
 }
