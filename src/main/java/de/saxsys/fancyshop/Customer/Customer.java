@@ -25,9 +25,6 @@ public class Customer {
 	private Long id;
 	private String firstName;
 	private String name;
-	@JsonIgnore
-	private String password;
-	
 	
 	public JSONObject toJSON() {
 		JSONObject object = new JSONObject();

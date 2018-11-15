@@ -5,8 +5,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import lombok.Getter;
@@ -21,10 +19,6 @@ public class CustomerService {
 	@Autowired
 	public CustomerRepository repository;
 	
-	@Bean
-	private PasswordEncoder getPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
 	
 	public JSONObject getRandomCustomer() 
 	{
@@ -44,7 +38,7 @@ public class CustomerService {
 	}
 	
 	public void addCustomer(Customer customer) {
-		customer.setPassword(getPasswordEncoder().encode(customer.getPassword()));
+//		customer.setPassword(getPasswordEncoder().encode(customer.getPassword()));
 		repository.save(customer);
 	}
 	
