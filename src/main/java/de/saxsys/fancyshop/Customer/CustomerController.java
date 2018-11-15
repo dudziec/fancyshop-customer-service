@@ -15,7 +15,6 @@ public class CustomerController {
 	@Autowired
 	private CustomerService service;
 	
-	
 	@RequestMapping(value = "/random", produces = "application/json", method = RequestMethod.GET)
 	public String getRandomCustomer() {
 		

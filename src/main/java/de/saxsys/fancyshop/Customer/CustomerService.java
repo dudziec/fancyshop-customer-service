@@ -30,6 +30,7 @@ public class CustomerService {
 	{
 		Customer customer = Customer.builder().name(getRandomFromTable(names))
 				                              .firstName(getRandomFromTable(firstNames)).build();
+		System.out.println(customer.toString());
 		return customer.toJSON();
 	}
 	
