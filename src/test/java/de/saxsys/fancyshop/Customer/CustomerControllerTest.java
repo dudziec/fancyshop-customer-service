@@ -24,13 +24,13 @@ public class CustomerControllerTest {
 	
 	@Test
 	public void shouldReturnRandomCustomer() {
-		assertNotNull(controller.getRandomCustomer());
+		assertNotNull(controller.getRandom());
 	}
 	
 	@Test
 	public void printCustomer() 
 	{
-		System.out.println(controller.getCustomerById(1L).toString());
+		System.out.println(controller.getById(1L).toString());
 		
 	}
 

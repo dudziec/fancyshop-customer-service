@@ -20,28 +20,4 @@ public class CustomerApplication extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(CustomerApplication.class);
 	}
-	
-	@Bean
-	public CommandLineRunner demo(CustomerRepository repository)
-	{
-		return (args) -> {
-			repository.save(new Customer("Tom", "Hanks"));
-			repository.save(new Customer("Its me", "Johhny"));
-			
-			System.out.println("Found with findAll()");
-			
-			for(Customer customer : repository.findAll())
-			{
-				System.out.println(customer.toString());
-			}
-				
-			System.out.println("Customer found with name Hanks");
-			repository.findByName("Hanks").forEach(hanks -> {
-				System.out.println(hanks.toString());
-			});
-			
-			System.out.println(repository.findById(1L).get().toString());
-
-		};
-	}
 }

@@ -18,25 +18,30 @@ public class CustomerController {
 	private CustomerService service;
 	
 	@RequestMapping(value = "/random", produces = "application/json", method = RequestMethod.GET)
-	public String getRandomCustomer() {
+	public String getRandom() {
 		
 		return service.getRandomCustomer().toString();
 	}
 	
 	@GetMapping(value = "/get/{id}")
-	public Customer getCustomerById(@PathVariable Long id)
+	public Customer getById(@PathVariable Long id)
 	{
 		return service.getCustomerById(id);
 	}
 	
 	@GetMapping(value = "/get-all")
-	public List<Customer> getAllCustomers() {
+	public List<Customer> getAll() {
 		return service.getAll();
 	}
 	
 	
 	@PostMapping(value = "/add")
-	public void addCustomer(@RequestBody Customer customer) {
+	public void add(@RequestBody Customer customer) {
 		service.addCustomer(customer);
+	}
+	
+	@PostMapping(value = "/delete/{id}")
+	public void delete(@PathVariable Long id) {
+		service.deleteById(id);
 	}
 }
