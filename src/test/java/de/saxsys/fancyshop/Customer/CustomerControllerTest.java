@@ -26,12 +26,4 @@ public class CustomerControllerTest {
 	public void shouldReturnRandomCustomer() {
 		assertNotNull(controller.getRandom());
 	}
-	
-	@Test
-	public void printCustomer() 
-	{
-		System.out.println(controller.getById(1L).toString());
-		
-	}
-
 }
