@@ -4,6 +4,8 @@ package de.saxsys.fancyshop.Customer;
 import org.json.JSONException;
 import org.junit.Test;
 
+import de.saxsys.fancyshop.customer.entity.Customer;
+
 public class CustomerTest {
 
 	@Test(expected = JSONException.class)

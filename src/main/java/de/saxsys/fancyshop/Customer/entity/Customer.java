@@ -1,4 +1,6 @@
-package de.saxsys.fancyshop.Customer;
+package de.saxsys.fancyshop.customer.entity;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

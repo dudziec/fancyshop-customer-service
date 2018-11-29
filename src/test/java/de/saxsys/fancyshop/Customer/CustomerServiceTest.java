@@ -8,6 +8,8 @@ import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.saxsys.fancyshop.customer.services.CustomerService;
+
 public class CustomerServiceTest {
 	private CustomerService service;
 	
