@@ -21,29 +21,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-public class Customer {
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String firstName;
-	private String name;
+	private String username;
+	private String password;
 	
-	public JSONObject toJSON() {
-		JSONObject object = new JSONObject();
-
-		if (firstName != null) {
-			object.put("firstName", firstName);
-		}
-
-		if (name != null) {
-			object.put("name", name);
-		}
-		return object;
-	}
-
-	public Customer(String firstName, String name) {
+	public User(String username, String password) {
 		super();
-		this.firstName = firstName;
-		this.name = name;
+		this.username = username;
+		this.password = password;
 	}
 }

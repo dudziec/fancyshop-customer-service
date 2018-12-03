@@ -7,40 +7,38 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.saxsys.fancyshop.customer.entity.Customer;
-import de.saxsys.fancyshop.customer.services.CustomerService;
+import de.saxsys.fancyshop.customer.entity.User;
+import de.saxsys.fancyshop.customer.services.UserService;
 
 @RestController
-public class CustomerController {
+public class UserController {
 
 	@Autowired
-	private CustomerService service;
-	
-	@RequestMapping(value = "/random", produces = "application/json", method = RequestMethod.GET)
-	public String getRandom() {
-		
-		return service.getRandomCustomer().toString();
-	}
+	private UserService service;
 	
 	@GetMapping(value = "/get/{id}")
-	public Customer getById(@PathVariable Long id)
+	public User getById(@PathVariable Long id)
 	{
 		return service.getCustomerById(id);
 	}
 	
+	@GetMapping("/get-user/{username}")
+	public User getByUsername(@PathVariable String username) 
+	{
+		return service.getByUsername(username);
+	}
+	
 	@GetMapping(value = "/get-all")
-	public List<Customer> getAll() {
+	public List<User> getAll() {
 		return service.getAll();
 	}
 	
 	
 	@PostMapping(value = "/add")
-	public void add(@RequestBody Customer customer) {
-		service.addCustomer(customer);
+	public void add(@RequestBody User user) {
+		service.addUser(user);
 	}
 	
 	@PostMapping(value = "/delete/{id}")
